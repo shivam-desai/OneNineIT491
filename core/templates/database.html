@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Database</title>
+</head>
+<style>
+header {
+  background-color: #7d5ce4;
+  padding: 30px;
+  text-align: center;
+  font-size: 45px;
+  color: white;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 100px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 125px 125px;
+  cursor: pointer;
+  position: center;
+}
+.button1 {
+	background-color: #8ad0c0;
+} 
+.button2 {
+	background-color: #8ad0c0;
+	margin: 150px 100px;
+} 
+.button3{
+	background-color: #8ad0c0;
+	margin: 150px 100px;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.form-container .cancel {
+  background-color: red;
+}
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+    
+</style>
+<!--
+<form action="database/" method="POST">
+    {% csrf_token %}
+
+    <label for="host">Host name: </label> <input id="host" type="text" name="host" value='host'>
+
+    <br><label for="userid">Username: </label>  <input id="userid" type="text" name="userid" value="{{ userid }}">
+
+    <br><label for="password">Password: </label> <input id="password" type="text" name="password" value="{{ password }}">
+
+    <input id="host" type="text" name="host" value='host'>
+    <input id="userid" type="text" name="userid" value="{{ userid }}">
+    <input id="password" type="text" name="password" value="{{ password }}">
+
+    <input type="submit" value="OK">
+    
+</form>
+-->
+<body style="background-color: #f2f1ef">
+	<header>Select Database</header>
+<SECTION>
+		
+		<button class="button button2"> Oracle</button>
+		<button class="button button3" onclick="openForm()"> SQL</button>
+
+
+
+<div class="form-popup" id="myForm">
+  <form action="database/" class="form-container" method="POST">
+	  {% csrf_token %}
+    <h1>Login</h1>
+
+    <label for="host"><b>Host</b></label>
+    <input id="host" type="text" name="host" value='host' >
+
+    <label for="Username"><b>Username</b></label>
+    <input id="userid" type="text" name="userid" value="{{ userid }}">
+
+    <label for="psw"><b>Password</b></label>
+    <input id="password" type="text" name="password" value="{{ password }}">
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+</SECTION>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+ document.getElementById("myForm").style.display = "none";
+	}
+</script>
+
+</body>
+</html>

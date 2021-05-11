@@ -40,3 +40,26 @@ def pages(request):
     
         html_template = loader.get_template( 'page-500.html' )
         return HttpResponse(html_template.render(context, request))
+
+def mysqllogin(request):
+    import mysql.connector
+    try:
+        ###if form.db.value="MySql"
+        host = request.POST.get('host')
+        user = request.POST.get('userid')
+        password = request.POST.get('password')
+
+        cnx = mysql.connector.connect(user='user', password='password',
+                              host='host',
+                              )
+        
+        cursor = db.cursor()
+        cursor.execute("SHOW DATABASES")
+        databases = cursor.fetchall()
+        print(databases)
+
+    except:
+
+        html_template = loader.get_template( 'page-500.html' )
+        return HttpResponse(html_template.render(context, request))
+

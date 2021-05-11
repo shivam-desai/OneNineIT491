@@ -1,0 +1,30 @@
+{% extends 'layouts/base-fullscreen.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+{% block content %}
+<div class="container mt--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent pb-5">
+		    <!--    <div class="text-muted text-center mt-2 mb-3"><small>{{databases}}</small></div> -->
+              <div class="btn-wrapper text-center">
+
+{{databases}}
+{% endblock content %}
+
+
+</body>
+</html>
+<!--
+<form action="templates/showdb.html" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+-->

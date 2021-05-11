@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
 from django.http import HttpResponse
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, NameForm
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -57,4 +57,35 @@ def register_user(request):
     else:
         form = SignUpForm()
 
-    return render(request, "accounts/register.html", {"form": form, "msg" : msg, "success" : success })
+    return render(request, "accounts/register.html", {"form": form, "msg" : msg, "success" : success
+})
+
+def mysqllogin(request):
+    import mysql.connector
+    if request.method == "POST":
+        form = NameForm(request.POST)
+        if form.is_valid():
+           ###if form.db.value="MySql"
+            host = form.cleaned_data.get('host')
+            user = form.cleaned_data.get('userid')
+            password = form.cleaned_data.get('password')
+            print(host,user,password)
+            cnx = mysql.connector.connect(user=user, password=password,
+                              host=host,
+                              )
+
+            cursor = cnx.cursor()
+            databases=[]
+            cursor.execute("SHOW DATABASES")
+            for row in cursor.fetchall():
+                databases.append(row[0])
+                print(row[0])
+
+            ###return HttpResponseRedirect('showdb.html', request.POST['host'])
+   ### else:
+    print(request.GET)
+       ### html_template = loader.get_template( 'page-500.html' )###
+        ###form=NameForm()
+    ###return render(request,"database.html", {{'host':host,'userid':user,'password':password}})
+    return render(request,"showdb.html",{'databases':databases})
+

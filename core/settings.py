@@ -74,7 +74,29 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME'  : 'db.sqlite3',
+    },
+    'mysql': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME'  : 'db.mysql',
+    },
+    'oracle': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME'  : 'db.oracle',
+    },
+    'mysql': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME'  : 'mydb',
+        'USER'  : 'debian-sys-maint',
+        'PASSWORD': 'lDxAVfkmcYwu01Vd',
+        'HOST'  : 'localhost',
+        'PORT'  : '',
+    },
+    'postgresql': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME'  : 'db.postgresql',
     }
+
+
 }
 
 # Password validation

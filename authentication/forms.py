@@ -56,3 +56,37 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+class NameForm(forms.Form):
+    
+    host = forms.CharField(label='host', max_length=100)
+    userid = forms.CharField(label='userid', max_length=100)
+    password = forms.CharField(label='password', max_length=100)
+    '''
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder" : "Username",
+                "class": "form-control"
+            }
+        ))
+
+    password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder" : "Password",
+                "class": "form-control"
+
+            }
+        ))
+
+    Host = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder" : "Host",
+                "class": "form-control"
+            }
+        ))
+
+'''
+
